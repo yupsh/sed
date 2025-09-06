@@ -2,18 +2,21 @@ package opt
 
 // Boolean flag types with constants
 type InPlaceFlag bool
+
 const (
 	InPlace   InPlaceFlag = true
 	NoInPlace InPlaceFlag = false
 )
 
 type QuietFlag bool
+
 const (
 	Quiet   QuietFlag = true
 	NoQuiet QuietFlag = false
 )
 
 type ExtendedRegexFlag bool
+
 const (
 	ExtendedRegex   ExtendedRegexFlag = true
 	NoExtendedRegex ExtendedRegexFlag = false
@@ -33,8 +36,8 @@ type Flags struct {
 }
 
 // Configure methods for the opt system
-func (f InPlaceFlag) Configure(flags *Flags) { flags.InPlace = f }
-func (f QuietFlag) Configure(flags *Flags) { flags.Quiet = f }
+func (f InPlaceFlag) Configure(flags *Flags)       { flags.InPlace = f }
+func (f QuietFlag) Configure(flags *Flags)         { flags.Quiet = f }
 func (f ExtendedRegexFlag) Configure(flags *Flags) { flags.ExtendedRegex = f }
-func (e Expression) Configure(flags *Flags) { flags.Expression = e }
-func (s ScriptFile) Configure(flags *Flags) { flags.ScriptFile = s }
+func (e Expression) Configure(flags *Flags)        { flags.Expression = e }
+func (s ScriptFile) Configure(flags *Flags)        { flags.ScriptFile = s }
