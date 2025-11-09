@@ -4,23 +4,23 @@ import (
 	"regexp"
 	"strings"
 
-	yup "github.com/gloo-foo/framework"
+	gloo "github.com/gloo-foo/framework"
 )
 
-type command yup.Inputs[string, flags]
+type command gloo.Inputs[string, flags]
 
-func Sed(parameters ...any) yup.Command {
-	return command(yup.Initialize[string, flags](parameters...))
+func Sed(parameters ...any) gloo.Command {
+	return command(gloo.Initialize[string, flags](parameters...))
 }
 
-func (p command) Executor() yup.CommandExecutor {
+func (p command) Executor() gloo.CommandExecutor {
 	// Get script from first positional argument
 	script := ""
 	if len(p.Positional) > 0 {
 		script = p.Positional[0]
 	}
 
-	return yup.LineTransform(func(line string) (string, bool) {
+	return gloo.LineTransform(func(line string) (string, bool) {
 		output := line
 
 		// Parse sed command - support simple s/pattern/replacement/ syntax
